@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inbox - Admin</title>
+
+  <!-- Menggunakan Bootstrap untuk tampilan website yang responsif -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+  <!-- Menggunakan Font Awesome untuk ikon -->
+  <link rel="stylesheet" href="assets/css/all.min.css" />
+
+  <!-- File CSS buatan sendiri untuk mengatur tampilan header/footer dan letak ikon medsos -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Favicon untuk tampilan logo pada browser ketika web dibuka -->
+  <link rel="icon" href="favicon.png" type="image/png">
+</head>
+<body>
+
+  <!-- Header: Navigasi atas -->
+  <header>
+    <!-- Logo nama pemilik website -->
+    <a href="index.html" class="logo">Nanda Amalia</a>
+
+    <!-- Tombol menu hamburger (untuk layar kecil) misaknya smarthphone -->
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fa fa-bars"></i>
+    </div>
+
+    <!-- Menu navigasi -->
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="admin_inbox.html" class="active">Inbox</a> <!-- Halaman aktif -->
+    </nav>
+  </header>
+
+  <!-- Konten utama halaman -->
+  <section class="container py-5">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Kotak Masuk</h2>
+      <p class="text-muted">Berikut adalah pesan-pesan yang telah dikirim melalui form kontak.</p>
+    </div>
+
+    <!-- Pencarian dan tombol download CSV/data dalam bentuk tabel di file excel -->
+    <div class="mb-3 d-flex justify-content-between align-items-center">
+      <input type="text" id="searchInput" class="form-control w-50" placeholder="Cari berdasarkan nama...">
+      <button class="btn btn-success" onclick="downloadCSV()">Download CSV</button>
+    </div>
+
+    <!-- Tabel daftar pesan -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover text-center" id="inboxTable">
+        <thead class="table-primary">
+          <tr>
+            <th>#</th>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>Pesan</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody></tbody> <!-- Isi tabel akan dimasukkan via JavaScript -->
+      </table>
+    </div>
+  </section>
+
+  <!-- Script JavaScript untuk menampilkan dan mengelola pesan -->
+  <script>
+    let db; // variabel untuk database IndexedDB
+    let tableBody = document.querySelector("#inboxTable tbody"); // target body tabel
+
+    // Saat halaman dimuat
+    window.onload = function () {
+      let request = indexedDB.open("ContactDB", 1); // buka database bernama ContactDB
+
+      // Jika berhasil dibuka
+      request.onsuccess = function (event) {
+        db = event.target.result; // simpan database ke variabel db
+        loadMessages(); // tampilkan semua pesan
+      };
+
+      // Event pencarian: saat user mengetik, filter data
+      document.getElementById("searchInput").addEventListener("input", function () {
+        loadMessages(this.value.toLowerCase());
+      });
+    };
+
+    // Fungsi untuk menampilkan semua pesan atau berdasarkan pencarian
+    function loadMessages(searchTerm = "") {
+      tableBody.innerHTML = ""; // kosongkan isi tabel
+      const tx = db.transaction("contacts", "readonly"); // transaksi hanya untuk membaca
+      const store = tx.objectStore("contacts"); // ambil object store "contacts"
+      let index = 1; // nomor urut
+
+      // Membaca data satu per satu dengan cursor
+      store.openCursor().onsuccess = function (event) {
+        const cursor = event.target.result;
+        if (cursor) {
+          const { name, email, message } = cursor.value;
+
+          // Filter berdasarkan nama/email/pesan
+          if (
+            name.toLowerCase().includes(searchTerm) ||
+            email.toLowerCase().includes(searchTerm) ||
+            message.toLowerCase().includes(searchTerm)
+          ) {
+            // Buat baris baru
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${index++}</td>
+              <td>${name}</td>
+              <td>${email}</td>
+              <td>${message}</td>
+              <td><button class="btn btn-danger btn-sm" onclick="deleteMessage(${cursor.key})">Hapus</button></td>
+            `;
+            tableBody.appendChild(row);
+          }
+
+          // Lanjut ke data berikutnya
+          cursor.continue();
+        }
+      };
+    }
+
+    // Fungsi untuk menghapus pesan berdasarkan ID (key)
+    function deleteMessage(id) {
+      if (confirm("Yakin ingin menghapus pesan ini?")) {
+        const tx = db.transaction("contacts", "readwrite");
+        const store = tx.objectStore("contacts");
+        store.delete(id); // hapus data berdasarkan key
+        tx.oncomplete = () => loadMessages(); // tampilkan ulang tabel
+      }
+    }
+
+    // Fungsi untuk mengunduh semua data sebagai file CSV
+    function downloadCSV() {
+      let csv = "Nama,Email,Pesan\n"; // header CSV
+      const tx = db.transaction("contacts", "readonly");
+      const store = tx.objectStore("contacts");
+
+      store.openCursor().onsuccess = function (event) {
+        const cursor = event.target.result;
+        if (cursor) {
+          const { name, email, message } = cursor.value;
+          csv += `"${name}","${email}","${message.replace(/\n/g, " ")}"\n`; // ubah newline jadi spasi
+          cursor.continue();
+        } else {
+          // Setelah selesai, buat file CSV dan download
+          const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+          const link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = "inbox.csv";
+          link.click();
+        }
+      };
+    }
+  </script>
+
+  <!-- Script tombol hamburger untuk tampilan mobile -->
+  <script>
+    const toggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("nav");
+
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("active"); // tampilkan/sembunyikan menu
+    });
+  </script>
+
+  <!-- Script dari Bootstrap agar interaksi berfungsi -->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

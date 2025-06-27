@@ -1,0 +1,254 @@
+/* ============================= 
+   RESET DAN FONTS DASAR
+   Mengatur ulang margin, padding, dan box-sizing agar konsisten di semua browser.
+   Menentukan font, warna teks, dan warna latar belakang dasar untuk seluruh halaman.
+   ============================= */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  /* =============================
+     HEADER & NAVIGATION RESPONSIF
+     Mengatur tata letak header dan navigasi utama agar sejajar.
+     ============================= */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #1e40af;
+    color: white;
+    position: relative;
+  }
+  
+  /* Logo nama di header */
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+  }
+  
+  /* Navigasi menu horizontal dengan jarak antar item */
+  nav {
+    display: flex;
+    gap: 15px;
+  }
+  
+  /* Link navigasi */
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 10px;
+  }
+  
+  /* Efek hover dan penanda halaman aktif */
+  nav a:hover,
+  nav a.active {
+    background-color: #374bbd;
+    border-radius: 5px;
+  }
+  
+  /* =============================
+     HAMBURGER MENU UNTUK MOBILE
+     Tampilkan menu hamburger pada layar kecil dan ubah navigasi jadi vertikal.
+     ============================= */
+  .menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  @media (max-width: 767px) {
+    .menu-toggle {
+      display: block; /* Tampilkan hamburger icon di mobile */
+    }
+  
+    nav {
+      display: none; /* Sembunyikan menu awalnya di mobile */
+      flex-direction: column;
+      background-color: #1e40af;
+      position: absolute;
+      top: 65px;
+      right: 20px;
+      width: 160px;
+      border-radius: 8px;
+      padding: 10px 0;
+      z-index: 100;
+    }
+  
+    nav.active {
+      display: flex; /* Tampilkan menu saat tombol diklik */
+    }
+  
+    nav a {
+      padding: 12px 15px;
+    }
+  }
+  
+  /* =============================
+     HERO SECTION (HOME)
+     Tata letak bagian home agar responsif dan rapi di semua ukuran layar.
+     ============================= */
+  .home {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+    gap: 30px;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+  }
+  
+  @media (min-width: 768px) {
+    .home {
+      grid-template-columns: 1fr 1fr; /* Dua kolom di desktop */
+      text-align: left;
+      padding: 60px 80px;
+    }
+  
+    .home-img {
+      text-align: center;
+    }
+  }
+  
+  /* =============================
+     GAMBAR RESPONSIF
+     Menyesuaikan gambar agar fleksibel terhadap ukuran layar.
+     ============================= */
+  .home-img img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+  }
+  
+  /* =============================
+     KONTEN HOME
+     Styling judul, teks, dan efek penekanan kata.
+     ============================= */
+  .home-content h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .home-content h1 span {
+    color: #1e40af;
+  }
+  
+  .typing-text span {
+    color: #374bbd;
+    font-weight: bold;
+  }
+  
+  .home-content p {
+    max-width: 600px;
+    margin: 20px auto;
+    font-size: 1rem;
+  }
+  
+  /* =============================
+     IKON SOSIAL MEDIA
+     Mengatur ukuran, warna, dan efek hover ikon sosial.
+     ============================= */
+  .social-icons {
+    margin-top: 15px;
+  }
+  
+  .social-icons a {
+    margin: 0 10px;
+    font-size: 1.5rem;
+    color: #1e40af;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Warna ikon saat hover berdasarkan brand */
+  .social-icons a:hover .fa-linkedin {
+    color: #0077b5;
+  }
+  
+  .social-icons a:hover .fa-x-twitter {
+    color: #1da1f2;
+  }
+  
+  .social-icons a:hover .fa-instagram {
+    color: #e1306c;
+  }
+  
+  .social-icons a:hover .fa-whatsapp {
+    color: #25d366;
+  }
+  
+  /* =============================
+     TOMBOL CTA
+     Desain tombol aksi utama agar menarik dan interaktif.
+     ============================= */
+  .btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: #1e40af;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #374bbd;
+  }
+  
+  /* =============================
+     FOOTER
+     Desain bagian bawah halaman dengan info dan ikon media sosial.
+     ============================= */
+  footer {
+    background-color: #1e40af;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  footer p {
+    margin-bottom: 10px;
+  }
+  
+  footer .social-icons {
+    margin-top: 10px;
+  }
+  
+  footer .social-icons a {
+    margin: 0 10px;
+    color: white;
+    font-size: 1.5rem;
+    transition: 0.3s ease;
+  }
+  
+  footer .social-icons a:hover {
+    color: #374bbd;
+  }
+  

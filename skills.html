@@ -1,0 +1,133 @@
+<!DOCTYPE html> 
+<html lang="id"> 
+<head>
+  <meta charset="UTF-8" />
+
+   <!-- Membuat halaman tampil baik di semua ukuran layar -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Skills - Nanda</title>
+
+  <!-- Memuat CSS dari Bootstrap untuk styling yang cepat dan responsif -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+  <!-- Memuat ikon-ikon media sosial dan menu navigasi dari Font Awesome -->
+  <link rel="stylesheet" href="assets/css/all.min.css" />
+
+
+   <!-- Menyisipkan file CSS buatan sendiri khusus untuk mengatur menu, footer, header, tombol hamburger agar tidak berantakan -->
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="icon" href="favicon.png" type="image/png">
+
+</head>
+<body>
+
+  <!-- Header situs, berisi logo dan navigasi utama -->
+  <header>
+    <a href="index.html" class="logo">Nanda Amalia</a>
+
+    <!-- Tombol hamburger untuk menu navigasi di tampilan mobile -->
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fa fa-bars"></i>
+    </div>
+
+    <!-- Menu navigasi ke halaman lain di situs -->
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="aboutme.html">About Me</a>
+      <a href="skills.html" class="active">Skills</a> <!-- Halaman aktif sekarang -->
+      <a href="education.html">Education</a>
+      <a href="experience.html">Experience</a>
+      <a href="contact.html">Contact</a>
+      <a href="admin_inbox.html">Inbox</a>
+    </nav>
+  </header>
+
+  <!-- Bagian utama halaman: daftar keterampilan -->
+  <section class="container py-5"> <!-- 'container' = batas lebar konten, 'py-5' = padding atas & bawah -->
+    
+    <!-- Judul dan deskripsi singkat halaman skills -->
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">My Skills</h2> <!-- Judul tebal -->
+      <p class="text-muted">Beberapa kemampuan yang saya kuasai dalam dunia teknologi dan desain.</p>
+    </div>
+
+    <!-- Baris yang berisi 3 kolom keterampilan -->
+    <div class="row g-4"> <!-- g-4 = jarak antar kolom -->
+
+      <!-- Kolom skill pertama: Front-End Web -->
+      <div class="col-md-4">
+        <div class="card h-100 text-center shadow-sm"> <!-- Card = kotak konten, h-100 = tinggi penuh -->
+          <div class="card-body">
+            <i class="fa-solid fa-code fa-2x mb-3 text-primary"></i> <!-- Ikon coding -->
+            <h5 class="card-title">Front-End Web</h5> <!-- Judul skill -->
+            <p class="card-text">Menguasai HTML5, CSS3, dan dasar JavaScript untuk membuat tampilan web yang responsif dan menarik.</p>
+            <!-- Daftar teknologi dengan badge -->
+            <span class="badge bg-primary">HTML</span>
+            <span class="badge bg-success">CSS</span>
+            <span class="badge bg-warning text-dark">JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kolom skill kedua: UI/UX Design -->
+      <div class="col-md-4">
+        <div class="card h-100 text-center shadow-sm">
+          <div class="card-body">
+            <i class="fa-solid fa-paintbrush fa-2x mb-3 text-danger"></i> <!-- Ikon desain -->
+            <h5 class="card-title">UI/UX Design</h5>
+            <p class="card-text">Mendesain antarmuka pengguna yang ramah dan menarik menggunakan Figma dan prinsip desain UX modern.</p>
+            <span class="badge bg-danger">Figma</span>
+            <span class="badge bg-secondary">Wireframing</span>
+            <span class="badge bg-info text-dark">Prototyping</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kolom skill ketiga: Database & Akuntansi -->
+      <div class="col-md-4">
+        <div class="card h-100 text-center shadow-sm">
+          <div class="card-body">
+            <i class="fa-solid fa-database fa-2x mb-3 text-success"></i> <!-- Ikon database -->
+            <h5 class="card-title">Database & Akuntansi</h5>
+            <p class="card-text">Memahami dasar-dasar pengelolaan database serta sistem informasi akuntansi untuk pengolahan data keuangan.</p>
+            <span class="badge bg-success">MySQL</span>
+            <span class="badge bg-dark">MS Excel</span>
+            <span class="badge bg-secondary">SIA</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Script untuk fungsi tombol hamburger menu -->
+  <script>
+    const toggle = document.getElementById("menu-toggle"); // Ambil tombol menu
+    const nav = document.getElementById("nav"); // Ambil elemen navigasi
+
+    // Saat tombol diklik, tampilkan/sembunyikan menu
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+  </script>
+
+  <!-- Footer halaman -->
+  <footer>
+    <div class="footer-container">
+      <p>© 2025 Nanda Amalia. All rights reserved.</p>
+      <!-- Ikon sosial media -->
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Memuat Bootstrap JS agar komponen interaktif seperti collapse atau modal bisa berfungsi -->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

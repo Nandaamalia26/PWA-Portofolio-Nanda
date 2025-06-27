@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Penerapan viewport mengatur agar tampilan menyesuaikan lebar perangkat (penting untuk responsive design) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>About Me</title>
+
+  <!-- Sisipkan Bootstrap CSS (library CSS yang mempermudah styling) -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+  <!-- Sisipkan Font Awesome untuk ikon media sosial dan menu -->
+  <link rel="stylesheet" href="assets/css/all.min.css" />
+ 
+   <!-- Menyisipkan file CSS buatan sendiri khusus untuk mengatur menu, footer, header, tombol hamburger agar tidak berantakan -->
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="icon" href="favicon.png" type="image/png">
+
+</head>
+<body>
+
+  <!-- Header halaman, berisi nama/logo dan menu navigasi -->
+  <header>
+    <!-- Logo atau nama pemilik situs -->
+    <a href="index.html" class="logo">Nanda Amalia</a>
+
+    <!-- Tombol hamburger (ikon menu untuk tampilan mobile) untuk ditampilkan pada layar kecil/HP-->
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fa fa-bars"></i>
+    </div>
+
+    <!-- Navigasi utama ke berbagai halaman -->
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About Me</a>
+      <a href="skills.html">Skills</a>
+      <a href="education.html">Education</a>
+      <a href="experience.html">Experience</a>
+      <a href="contact.html">Contact</a>
+      <a href="admin_inbox.html">Inbox</a>
+    </nav>
+  </header>
+
+  <!-- Bagian konten utama halaman "About Me" -->
+  <section class="container py-5"> <!-- py-5 = padding atas & bawah (Bootstrap class) -->
+    <div class="row align-items-center"> <!-- Baris dengan konten sejajar secara vertikal di tengah -->
+      
+      <!-- Kolom kiri: gambar profil -->
+      <div class="col-md-5 mb-4">
+        <img src="Aku.jpeg" class="img-fluid rounded-4 shadow" alt="Foto Nanda"> 
+        <!-- img-fluid = agar gambar responsif -->
+        <!-- rounded-4 = sudut gambar dibulatkan -->
+        <!-- shadow = efek bayangan -->
+      </div>
+
+      <!-- Kolom kanan: teks perkenalan -->
+      <div class="col-md-7">
+        <h2 class="mb-3">ABOUT ME</h2>
+
+        <!-- Paragraf perkenalan singkat -->
+        <p>Halo! Saya <strong>Nanda Amalia Hastuti</strong>, seorang mahasiswi Sistem Informasi Akuntansi yang mencintai desain dan pengembangan web. 
+        Saya percaya bahwa detail kecil dapat menciptakan pengalaman pengguna yang luar biasa.</p>
+
+        <!-- Paragraf tentang minat & pengembangan diri -->
+        <p>
+            Saya memiliki minat besar dalam dunia UI/UX, web development, serta sistem akuntansi. 
+            Saya selalu berusaha meningkatkan kemampuan melalui proyek-proyek kecil seperti portofolio ini.
+        </p>
+
+        <!-- Paragraf tambahan yang lebih personal -->
+        <p>
+            Selain coding, saya juga suka menulis dan mendesain visual sederhana. Yuk, terhubung dan berkolaborasi!
+        </p>
+
+        <!-- Tombol ajakan untuk mengirim email -->
+        <a href="mailto:nanda@email.com" class="btn btn-primary mt-3">Email Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Script JavaScript sederhana untuk mengaktifkan menu hamburger -->
+  <script>
+    const toggle = document.getElementById("menu-toggle"); // Ambil elemen tombol menu
+    const nav = document.getElementById("nav"); // Ambil elemen navigasi
+
+    // Saat tombol diklik, aktif/nonaktifkan class "active" untuk menampilkan/menyembunyikan menu
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+  </script>
+
+  <!-- Footer halaman (penutup yang berisi hak cipta dan ikon sosial media) -->
+  <footer>
+    <div class="footer-container">
+      <p>© 2025 Nanda Amalia. All rights reserved.</p>
+
+      <!-- Ikon sosial media untuk koneksi eksternal -->
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

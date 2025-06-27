@@ -1,0 +1,133 @@
+<!-- Pada tampilan Beranda/Home bootstrap belum diterapkan
+ Bootstrap diterapkan pada halaman web 
+ About Me
+ Skills
+ Education
+ Experience
+ Contact -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Mengatur agar tampilan mengikuti lebar perangkat pengguna -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Portofolio Nanda</title>
+
+  <!-- Mengimpor ikon dari Font Awesome (digunakan untuk ikon-ikon sosial media dan menu) -->
+  <link rel="stylesheet" href="assets/css/all.min.css" />
+
+  <!-- Menghubungkan ke file CSS eksternal yang berisi gaya tampilan pada Beranda/Home  -->
+  <link rel="stylesheet" href="style.css" />
+  
+  <link rel="manifest" href="manifest.json">
+
+
+  <link rel="icon" href="favicon.png" type="image/png">
+
+</head>
+<body>
+
+  <!-- Bagian header (bagian atas halaman yang berisi logo dan menu navigasi) -->
+  <header>
+    <!-- Logo atau nama pemilik situs yang akan ditampilkan pada bagian pojok kiri atas -->
+    <a href="#" class="logo">Nanda Amalia</a>
+
+    <!-- Tombol hamburger (ikon tiga garis) untuk membuka/menutup menu di layar kecil/HP -->
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fa fa-bars"></i>
+    </div>
+
+    <!-- Navigasi utama (menu ke berbagai halaman portofolio) -->
+    <nav id="nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="aboutme.html">About Me</a>
+      <a href="skills.html">Skills</a>
+      <a href="education.html">Education</a>
+      <a href="experience.html">Experience</a>
+      <a href="contact.html">Contact</a>
+      <a href="admin_inbox.html">Inbox</a>
+    </nav>
+  </header>
+
+  <!-- Bagian utama halaman (hero section) -->
+  <section class="home">
+    <!-- Kolom kiri: gambar profil (gunakan class CSS agar responsif) -->
+    <div class="home-img">
+      <img src="Aku.jpeg" alt="Foto Nanda" />
+    </div>
+
+    <!-- Kolom kanan: teks perkenalan dan ajakan -->
+    <div class="home-content">
+      <h1>Hi, It's <span>"Nanda"</span></h1>
+      <h3 class="typing-text">I'm a <span>Web Designer</span></h3>
+      
+      <!-- Paragraf deskripsi singkat tentang diri sendiri -->
+      <p>
+        Nama saya Nanda Amalia Hastuti. Saya adalah seorang mahasiswa jurusan Sistem Informasi Akuntansi. 
+        Saya suka membuat hal-hal kecil menjadi bermakna melalui desain dan baris kode. 
+        Portofolio ini adalah bagian dari perjalanan saya ✨. 
+      </p>
+
+      <!-- Ajakan kolaborasi -->
+      <p>
+        <strong>Mari kita membangun sesuatu yang luar biasa bersama✨</strong>
+      </p>
+
+      <!-- Ikon media sosial -->
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+
+      <!-- Tombol "Hire me" untuk menuju halaman kontak atau penawaran kerja -->
+      <a href="#" class="btn">Hire me</a>
+    </div>
+  </section>
+
+  <!-- Bagian footer (penutup halaman, biasanya berisi hak cipta dan ikon sosial) -->
+  <footer>
+    <div class="footer-container">
+      <p>© 2025 Nanda Amalia. All rights reserved.</p>
+
+      <!-- Ikon sosial media yang sama seperti di atas, sebagai pengingat di akhir halaman -->
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Script JavaScript untuk membuat tombol hamburger bisa membuka/menutup menu -->
+  <script>
+    const toggle = document.getElementById("menu-toggle"); // Tombol hamburger
+    const nav = document.getElementById("nav"); // Menu navigasi utama
+
+    // ✅ Saat tombol diklik, tambahkan/hapus class "active" agar menu muncul atau tersembunyi
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+  </script> 
+
+  <script>
+  // Mengecek apakah browser mendukung Service Worker
+  if ("serviceWorker" in navigator) {
+  // Mencoba mendaftarkan file service-worker.js
+  window.addEventListener("load", function () {
+    navigator.serviceWorker
+      .register("service-worker.js")
+      .then(function (registration) {
+        console.log("✅ Service Worker berhasil didaftarkan:", registration.scope);
+      })
+      .catch(function (error) {
+        console.log("❌ Service Worker gagal didaftarkan:", error);
+      });
+  });
+  }
+</script>
+</body>
+</html>

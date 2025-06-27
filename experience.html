@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Penerapan viewport membuat tampilan responsif di semua perangkat -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+
+  <title>Experience - Nanda</title> <!-- Judul halaman yang muncul di tab browser -->
+
+  <!-- Menyisipkan CSS Bootstrap untuk styling cepat dan responsif -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+  <!-- Menyisipkan Font Awesome untuk ikon-ikon -->
+  <link rel="stylesheet" href="assets/css/all.min.css" />
+
+
+  <!-- Menyisipkan file CSS buatan sendiri khusus untuk mengatur menu, footer, header, tombol hamburger agar tidak berantakan -->
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="icon" href="favicon.png" type="image/png">
+
+</head>
+<body>
+
+  <!-- Header: berisi logo dan menu navigasi -->
+  <header>
+    <a href="index.html" class="logo">Nanda Amalia</a> <!-- Logo atau nama pemilik website -->
+
+    <!-- Tombol menu hamburger (untuk tampilan mobile) -->
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fa fa-bars"></i>
+    </div>
+
+    <!-- Navigasi utama -->
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="aboutme.html">About Me</a>
+      <a href="skills.html">Skills</a>
+      <a href="education.html">Education</a>
+      <a href="experience.html" class="active">Experience</a> <!-- Menandai halaman yang sedang dibuka -->
+      <a href="contact.html">Contact</a>
+      <a href="admin_inbox.html">Inbox</a>
+    </nav>
+  </header>
+
+  <!-- Bagian utama: menampilkan pengalaman yang pernah dilakukan -->
+  <section class="container py-5"> <!-- container = pembatas layout, py-5 = padding atas & bawah -->
+    
+    <!-- Judul bagian dan deskripsi singkat -->
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">My Experience</h2>
+      <p class="text-muted">Beberapa pengalaman dan kontribusi yang telah saya lakukan selama perjalanan belajar dan berkarya.</p>
+    </div>
+
+    <!-- Baris yang berisi dua kolom: masing-masing satu pengalaman -->
+    <div class="row g-4"> <!-- g-4 = memberikan jarak antar kolom -->
+
+      <!-- Kolom 1: Panitia kegiatan kampus -->
+      <div class="col-md-6">
+        <div class="card shadow-sm border-0 h-100"> <!-- card = kotak konten, shadow-sm = efek bayangan, border-0 = tanpa garis -->
+          <div class="card-body">
+            <!-- Judul kartu dengan ikon orang berkumpul -->
+            <h5 class="card-title"><i class="fa-solid fa-people-group text-success me-2"></i>Panitia Kegiatan Organisasi</h5>
+            <p class="card-text"><small class="text-muted">2022 - 2024</small></p>
+            <!-- Daftar tugas atau peran yang dilakukan -->
+            <ul class="list-unstyled">
+              <li>• Dokumentasi & desain publikasi acara</li>
+              <li>• Koordinasi tim desain & media sosial</li>
+              <li>• Membuat desain pamflet, banner, id card, dll.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kolom 2: Pengalaman magang (internship) -->
+      <div class="col-md-6">
+        <div class="card shadow-sm border-0 h-100">
+          <div class="card-body">
+            <!-- Judul kartu dengan ikon koper kerja -->
+            <h5 class="card-title"><i class="fa-solid fa-briefcase text-warning me-2"></i>Internship - Bagian Keuangan</h5>
+            <p class="card-text"><small class="text-muted">2024 - 2025 (5 Bulan)</small></p>
+            <!-- Daftar tugas selama internship -->
+            <ul class="list-unstyled">
+              <li>• Pengelolaan absensi karyawan perusahaan</li>
+              <li>• Mengecek data gaji karyawan, siswa PKL, mahasiwa magang mingguan</li>
+              <li>• Menggunakan Excel dan software akuntansi</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Script untuk menu hamburger agar bisa menampilkan/menyembunyikan navigasi saat diklik -->
+  <script>
+    const toggle = document.getElementById("menu-toggle"); // Ambil tombol hamburger
+    const nav = document.getElementById("nav"); // Ambil elemen menu navigasi
+
+    // Tambah/hapus class "active" pada navigasi saat tombol diklik
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+  </script>
+
+  <!-- Footer: berisi hak cipta dan ikon sosial media -->
+  <footer>
+    <div class="footer-container">
+      <p>© 2025 Nanda Amalia. All rights reserved.</p> <!-- Teks hak cipta -->
+      
+      <!-- Ikon-ikon sosial media -->
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Menyisipkan Bootstrap JS agar fitur interaktif seperti dropdown atau collapse berfungsi -->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
